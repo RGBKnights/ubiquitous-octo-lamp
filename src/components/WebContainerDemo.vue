@@ -2,7 +2,7 @@
 import { ref } from 'vue';
 import { getWebContainer } from '../webcontainer/webcontainer';
 import { sampleProject } from '../webcontainer/sampleProject';
-import Terminal from './Terminal.vue';
+import XTerminal from './XTerminal.vue';
 import Preview from './Preview.vue';
 
 const logs = ref<string[]>([]);
@@ -11,6 +11,13 @@ const isLoading = ref(false);
 const isServerRunning = ref(false);
 
 function addLog(message: string) {
+  logs.value.push(message);
+  logs.value.push('\n');
+  logs.value.push('\x1b[1G');
+  logs.value.push('\x1b[0K');
+}
+
+function streamLog(message: string) {
   logs.value.push(message);
 }
 
@@ -44,13 +51,13 @@ async function startWebContainer() {
       throw new Error(`Installation failed with code ${installExitCode}`);
     }
     
-    addLog('🚀 Starting dev server...');
+    addLog('🚀 Starting dev server...');   
     const devProcess = await webcontainer.spawn('npm', ['run', 'dev']);
     
     devProcess.output.pipeTo(
       new WritableStream({
         write(data) {
-          addLog(data);
+          streamLog(data);
         },
       })
     );
@@ -58,6 +65,7 @@ async function startWebContainer() {
     // Listen for server-ready event
     webcontainer.on('server-ready', (port, url) => {
       addLog(`🌐 Server ready at ${url}:${port}`);
+      
       if (preview.value) {
         preview.value.setUrl(url);
       }
@@ -95,7 +103,7 @@ async function startWebContainer() {
     </button>
     
     <h3>Terminal Output</h3>
-    <Terminal :logs="logs" />
+    <XTerminal :logs="logs" />
     
     <h3>Preview</h3>
     <Preview ref="preview" />
