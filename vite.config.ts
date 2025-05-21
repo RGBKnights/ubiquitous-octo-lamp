@@ -7,7 +7,7 @@ export default defineConfig({
    server: {
     headers: {
       "Cross-Origin-Embedder-Policy": "credentialless",
-      "Cross-Origin-Opener-Policy": "cross-origin"
+      "Cross-Origin-Opener-Policy": "same-origin" // strict-origin-when-cross-origin
     },
   },
 })
