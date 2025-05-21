@@ -4,7 +4,7 @@ let webcontainerInstance: WebContainer | null = null;
 
 export async function getWebContainer() {
   if (!webcontainerInstance) {
-    webcontainerInstance = await WebContainer.boot({coep: 'credentialless' });
+    webcontainerInstance = await WebContainer.boot({coep: 'require-corp' });
   }
   return webcontainerInstance;
 }
