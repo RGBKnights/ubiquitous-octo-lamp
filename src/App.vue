@@ -34,7 +34,9 @@ import WebContainerDemo from './components/WebContainerDemo.vue';
             WebContainers require SharedArrayBuffer, which needs cross-origin isolation.
             In production, make sure your site is served with the following headers:
           </p>
-          <pre>Cross-Origin-Embedder-Policy: require-corp
+          <pre>
+referrer-policy: strict-origin-when-cross-origin
+Cross-Origin-Embedder-Policy: require-corp
 Cross-Origin-Opener-Policy: same-origin</pre>
         </div>
         
