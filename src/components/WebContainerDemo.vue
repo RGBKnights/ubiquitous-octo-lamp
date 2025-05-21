@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, onMounted } from 'vue';
+import { ref } from 'vue';
 import { getWebContainer } from '../webcontainer/webcontainer';
 import { sampleProject } from '../webcontainer/sampleProject';
 import Terminal from './Terminal.vue';
@@ -57,7 +57,7 @@ async function startWebContainer() {
     
     // Listen for server-ready event
     webcontainer.on('server-ready', (port, url) => {
-      addLog(`🌐 Server ready at ${url}`);
+      addLog(`🌐 Server ready at ${url}:${port}`);
       if (preview.value) {
         preview.value.setUrl(url);
       }
