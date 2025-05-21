@@ -3,8 +3,6 @@
     "rewrite": "/index.html"
   },
   "globalHeaders": {
-    "referrer-policy": "strict-origin-when-cross-origin",
-    "Access-Control-Allow-Origin": "*",
     "Cross-Origin-Embedder-Policy": "require-corp",
     "Cross-Origin-Opener-Policy": "same-origin"
   }
