@@ -1,8 +1,6 @@
 {
   "globalHeaders": {
-    "Access-Control-Allow-Origin": "*",
-    "Access-Control-Allow-Methods": "GET, POST, PUT",
-    "Cross-Origin-Embedder-Policy": "credentialless",
-    "Cross-Origin-Opener-Policy": "same-origin"  
+      "Cross-Origin-Embedder-Policy": "require-corp",
+      "Cross-Origin-Opener-Policy": "same-origin"
   }
 }

@@ -12,10 +12,10 @@ defineExpose({
 
 <template>
   <div class="preview-container">
-    <!-- <div v-if="!iframeUrl" class="placeholder">
+    <div v-if="!iframeUrl" class="placeholder">
       <div class="message">Preview will appear here once the server is ready</div>
-    </div> -->
-    <iframe :src="iframeUrl" class="preview-iframe" credentialless></iframe>
+    </div>
+    <iframe v-else :src="iframeUrl" class="preview-iframe" allow="cross-origin-isolated"></iframe>
   </div>
 </template>
 
