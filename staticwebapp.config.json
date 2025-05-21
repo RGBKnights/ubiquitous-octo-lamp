@@ -1,6 +1,10 @@
 {
+  "navigationFallback": {
+    "rewrite": "/index.html"
+  },
   "globalHeaders": {
-      "Cross-Origin-Embedder-Policy": "require-corp",
-      "Cross-Origin-Opener-Policy": "same-origin"
+    "referrer-policy": "strict-origin-when-cross-origin",
+    "Cross-Origin-Embedder-Policy": "require-corp",
+    "Cross-Origin-Opener-Policy": "same-origin"
   }
 }
