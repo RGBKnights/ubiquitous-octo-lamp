@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { onMounted, ref, watch, toRef } from 'vue';
+import { onMounted, ref, watch } from 'vue';
 import { Terminal } from '@xterm/xterm';
 import '@xterm/xterm/css/xterm.css';
 
@@ -10,9 +10,6 @@ const props = defineProps<{
   logs: string[];
 }>();
 
-  // Index of the last log line we rendered
-let lastLineWritten = 0;
-  
 // Initialize logs when terminal is ready
 onMounted(() => {
   if (terminalRef.value) {
@@ -32,7 +29,6 @@ onMounted(() => {
     if (props.logs.length > 0) {
       props.logs.forEach(log => terminal?.writeln(log));
     }
-    lastLineWritten = props.logs.length;
   }
 });
 
@@ -46,7 +42,6 @@ watch(
       terminal.write(props.logs[i])
       // terminal.writeln(props.logs[i]);
     }
-    lastLineWritten = newLen;
   }
 );
 
